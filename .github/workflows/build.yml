@@ -1,0 +1,27 @@
+name: Build AMapNoSplash (RootHide)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install roothide Theos
+        run: bash -c "$(curl -fsSL https://raw.githubusercontent.com/roothide/theos/master/bin/install-theos)"
+
+      - name: Build package
+        env:
+          THEOS: ${{ github.workspace }}/theos
+        run: |
+          make clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
+
+      - name: Upload deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: AMapNoSplash-roothide-deb
+          path: packages/*.deb
