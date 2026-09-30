@@ -1,0 +1,9 @@
+Package: com.sunjunqiang.amapnosplash
+Name: AMapNoSplash
+Version: 0.3.0
+Architecture: iphoneos-arm64e
+Description: AMap 16.20.1 splash-ad helper for RootHide
+Maintainer: local
+Author: local
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate
